@@ -2291,6 +2291,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "nik-first-roguelike"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "bevy-inspector-egui",
+ "getrandom",
+ "rand",
+]
+
+[[package]]
 name = "nix"
 version = "0.24.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3027,16 +3037,6 @@ dependencies = [
  "arrayvec",
  "num-traits",
  "slotmap",
-]
-
-[[package]]
-name = "template"
-version = "0.1.0"
-dependencies = [
- "bevy",
- "bevy-inspector-egui",
- "getrandom",
- "rand",
 ]
 
 [[package]]
