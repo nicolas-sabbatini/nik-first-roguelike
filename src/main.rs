@@ -4,14 +4,19 @@ use debug_plugin::DebugPlugin;
 #[cfg(debug_assertions)]
 mod debug_plugin;
 
+use asset_loading::AssetLoadingPlugin;
 use bevy::{prelude::*, window::WindowResolution};
 use camera::CameraPlugin;
 use config::*;
 use flow_control::FlowControlPlugin;
+use grid::GridPlugin;
 
+mod asset_loading;
 mod camera;
 mod config;
+mod constants;
 mod flow_control;
+mod grid;
 
 fn main() {
     let mut app = App::new();
@@ -35,7 +40,11 @@ fn main() {
     #[cfg(debug_assertions)]
     app.add_plugin(DebugPlugin);
 
-    app.add_plugin(CameraPlugin).add_plugin(FlowControlPlugin);
+    app.add_plugin(CameraPlugin)
+        .add_plugin(FlowControlPlugin)
+        .add_plugin(AssetLoadingPlugin);
+
+    app.add_plugin(GridPlugin);
 
     app.run();
 }
