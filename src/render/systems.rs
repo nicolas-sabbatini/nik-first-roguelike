@@ -8,11 +8,11 @@ use crate::{
 use super::resources::GraphicsAssets;
 
 const SPRITESHEET_PATH: &str = "spritesheet.png";
-pub const TILE_SIZE: f32 = 16.0;
+pub const TILE_SIZE: f32 = 8.0;
 pub const TILE_PADDING: Option<Vec2> = None;
 pub const TILE_OFFSET: Option<Vec2> = None;
-pub const TILES_ROW: usize = 49;
-pub const TILES_COL: usize = 22;
+pub const TILES_ROW: usize = 16;
+pub const TILES_COL: usize = 10;
 
 pub fn load_assets(
     mut commands: Commands,
@@ -40,7 +40,7 @@ pub fn render_tiles(
     assets: Res<GraphicsAssets>,
 ) {
     for (entity, position) in &query {
-        let mut sprite = TextureAtlasSprite::new(0);
+        let mut sprite = TextureAtlasSprite::new(17);
         sprite.custom_size = Some(Vec2::splat(TILE_SIZE));
         let transform = Transform::from_translation(Vec3::new(
             position.0.x as f32 * TILE_SIZE,

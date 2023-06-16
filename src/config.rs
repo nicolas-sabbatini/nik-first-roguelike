@@ -1,7 +1,7 @@
 use bevy::prelude::Color;
 // Screen config
-pub const WINDOW_WIDTH: f32 = 400.0;
-pub const WINDOW_HEIGHT: f32 = 300.0;
+pub const WINDOW_WIDTH: f32 = 350.0;
+pub const WINDOW_HEIGHT: f32 = 250.0;
 pub const WINDOW_TITLE: &str = "TODO!";
 
 pub const WINDOW_CAMERA_NAME: &str = "windows camera";

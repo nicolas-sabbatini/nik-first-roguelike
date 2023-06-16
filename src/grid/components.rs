@@ -11,6 +11,4 @@ pub struct TileBundle {
     pub tag: Tile,
     pub name: Name,
     pub position: Position,
-    // #[bundle]
-    // pub sprite: SpriteBundle,
 }
