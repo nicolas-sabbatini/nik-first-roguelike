@@ -3,9 +3,9 @@ use bevy::prelude::*;
 
 use self::{resources::Grid, systems::initialize_grid};
 
-mod components;
-mod resources;
-mod systems;
+pub mod components;
+pub mod resources;
+pub mod systems;
 
 pub struct GridPlugin;
 impl Plugin for GridPlugin {

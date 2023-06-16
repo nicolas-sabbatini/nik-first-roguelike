@@ -10,6 +10,7 @@ use camera::CameraPlugin;
 use config::*;
 use flow_control::FlowControlPlugin;
 use grid::GridPlugin;
+use render::RenderPlugin;
 
 mod asset_loading;
 mod camera;
@@ -17,6 +18,7 @@ mod config;
 mod constants;
 mod flow_control;
 mod grid;
+mod render;
 
 fn main() {
     let mut app = App::new();
@@ -44,7 +46,7 @@ fn main() {
         .add_plugin(FlowControlPlugin)
         .add_plugin(AssetLoadingPlugin);
 
-    app.add_plugin(GridPlugin);
+    app.add_plugin(GridPlugin).add_plugin(RenderPlugin);
 
     app.run();
 }
