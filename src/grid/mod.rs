@@ -1,7 +1,6 @@
+use self::{resources::Grid, systems::initialize_grid};
 use crate::flow_control::GameState;
 use bevy::prelude::*;
-
-use self::{resources::Grid, systems::initialize_grid};
 
 pub mod components;
 pub mod resources;

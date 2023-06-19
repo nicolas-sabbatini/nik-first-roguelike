@@ -10,6 +10,7 @@ use camera::CameraPlugin;
 use config::*;
 use flow_control::FlowControlPlugin;
 use grid::GridPlugin;
+use player::PlayerPlugin;
 use render::RenderPlugin;
 
 mod asset_loading;
@@ -18,6 +19,8 @@ mod config;
 mod constants;
 mod flow_control;
 mod grid;
+mod pieces;
+mod player;
 mod render;
 
 fn main() {
@@ -44,7 +47,8 @@ fn main() {
 
     app.add_plugin(CameraPlugin)
         .add_plugin(FlowControlPlugin)
-        .add_plugin(AssetLoadingPlugin);
+        .add_plugin(AssetLoadingPlugin)
+        .add_plugin(PlayerPlugin);
 
     app.add_plugin(GridPlugin).add_plugin(RenderPlugin);
 
