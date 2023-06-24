@@ -39,7 +39,7 @@ pub fn load_assets(
 
 pub fn render_tiles(
     mut commands: Commands,
-    query: Query<(Entity, &Position), With<Tile>>,
+    query: Query<(Entity, &Position), Added<Tile>>,
     assets: Res<GraphicsAssets>,
 ) {
     for (entity, position) in &query {
@@ -57,7 +57,7 @@ pub fn render_tiles(
 
 pub fn render_pieces(
     mut commands: Commands,
-    query: Query<(Entity, &Position, &Piece)>,
+    query: Query<(Entity, &Position, &Piece), Added<Piece>>,
     assets: Res<GraphicsAssets>,
 ) {
     for (entity, position, piece) in &query {
@@ -73,5 +73,22 @@ pub fn render_pieces(
             transform,
             ..Default::default()
         });
+    }
+}
+
+pub fn update_piece_position(
+    mut query: Query<(&Position, &mut Transform), With<Piece>>,
+    time: Res<Time>,
+) {
+    for (position, mut transform) in query.iter_mut() {
+        let target = grid_to_graphics(position, PIECE_Z_INDEX);
+        let distance_delta = (target - transform.translation).length();
+        if distance_delta > SNAP_TO_GRID_DELTA {
+            transform.translation = transform
+                .translation
+                .lerp(target, LERP_SPEED_PX_SECONDS * time.delta_seconds());
+        } else {
+            transform.translation = target;
+        }
     }
 }
