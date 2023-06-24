@@ -2,7 +2,7 @@ use self::systems::{load_assets, render_pieces, render_tiles, update_piece_posit
 use bevy::prelude::*;
 
 mod constants;
-mod resources;
+pub mod resources;
 mod systems;
 
 pub struct RenderPlugin;

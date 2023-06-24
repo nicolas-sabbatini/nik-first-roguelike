@@ -2,7 +2,7 @@ use self::systems::{move_player, spawn_player};
 use crate::flow_control::GameState;
 use bevy::prelude::*;
 
-mod components;
+pub mod components;
 mod systems;
 
 pub struct PlayerPlugin;

@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-#[derive(Resource)]
+#[derive(Resource, Reflect)]
 pub struct GraphicsAssets {
     pub sprite_texture: Handle<TextureAtlas>,
 }

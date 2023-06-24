@@ -1,10 +1,10 @@
 use crate::{grid::components::Position, pieces::components::Piece};
 use bevy::prelude::*;
 
-#[derive(Component)]
+#[derive(Component, Reflect)]
 pub struct Player;
 
-#[derive(Bundle)]
+#[derive(Bundle, Reflect)]
 pub struct PlayerBundle {
     pub tag: Player,
     pub name: Name,

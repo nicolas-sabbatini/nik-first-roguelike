@@ -1,12 +1,13 @@
 use bevy::prelude::*;
 
-#[derive(Component)]
+#[derive(Component, Default, Reflect)]
+#[reflect(Component)]
 pub struct Position(pub IVec2);
 
-#[derive(Component)]
+#[derive(Component, Reflect)]
 pub struct Tile;
 
-#[derive(Bundle)]
+#[derive(Bundle, Reflect)]
 pub struct TileBundle {
     pub tag: Tile,
     pub name: Name,
