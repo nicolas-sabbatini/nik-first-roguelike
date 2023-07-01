@@ -4,7 +4,7 @@ use bevy::prelude::*;
 #[derive(Component, Reflect)]
 pub struct Player;
 
-#[derive(Bundle, Reflect)]
+#[derive(Bundle)]
 pub struct PlayerBundle {
     pub tag: Player,
     pub name: Name,

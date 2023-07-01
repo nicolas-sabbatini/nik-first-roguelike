@@ -7,7 +7,7 @@ pub struct Position(pub IVec2);
 #[derive(Component, Reflect)]
 pub struct Tile;
 
-#[derive(Bundle, Reflect)]
+#[derive(Bundle)]
 pub struct TileBundle {
     pub tag: Tile,
     pub name: Name,

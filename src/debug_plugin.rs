@@ -2,9 +2,9 @@ use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
 use bevy::prelude::*;
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
 
-use crate::grid::components::{Position, Tile, TileBundle};
+use crate::grid::components::{Position, Tile};
 use crate::pieces::components::{Piece, PieceKind};
-use crate::player::components::{Player, PlayerBundle};
+use crate::player::components::Player;
 use crate::render::resources::GraphicsAssets;
 
 pub struct DebugPlugin;
@@ -17,9 +17,7 @@ impl Plugin for DebugPlugin {
             .register_type::<PieceKind>()
             .register_type::<Piece>()
             .register_type::<Player>()
-            .register_type::<PlayerBundle>()
             .register_type::<Tile>()
-            .register_type::<Position>()
-            .register_type::<TileBundle>();
+            .register_type::<Position>();
     }
 }
