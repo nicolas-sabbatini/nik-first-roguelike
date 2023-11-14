@@ -7,8 +7,10 @@ use crate::flow_control::GameState;
 pub struct AssetLoadingPlugin;
 impl Plugin for AssetLoadingPlugin {
     fn build(&self, app: &mut App) {
-        app.init_resource::<AssetList>()
-            .add_system(check_asset_loading.in_set(OnUpdate(GameState::LoadAssets)));
+        app.init_resource::<AssetList>().add_systems(
+            Update,
+            (check_asset_loading).run_if(in_state(GameState::LoadAssets)),
+        );
     }
 }
 
@@ -20,6 +22,7 @@ pub fn check_asset_loading(
     asset_list: Res<AssetList>,
     mut next_state: ResMut<NextState<GameState>>,
 ) {
+    println!("check_asset_loading");
     match asset_server.get_group_load_state(asset_list.0.iter().map(|a| a.id())) {
         LoadState::Loaded => {
             next_state.set(GameState::Play);

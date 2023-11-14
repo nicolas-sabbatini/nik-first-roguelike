@@ -1,4 +1,4 @@
-// Load and use this module on debug
+// // Load and use this module on debug
 #[cfg(debug_assertions)]
 use debug_plugin::DebugPlugin;
 #[cfg(debug_assertions)]
@@ -14,6 +14,7 @@ use player::PlayerPlugin;
 use render::RenderPlugin;
 
 mod asset_loading;
+mod available_actions;
 mod camera;
 mod config;
 mod constants;
@@ -41,16 +42,19 @@ fn main() {
     )
     .insert_resource(Msaa::Off);
 
-    // Add this plugins and system on debug
+    // // Add this plugins and system on debug
     #[cfg(debug_assertions)]
-    app.add_plugin(DebugPlugin);
+    app.add_plugins(DebugPlugin);
 
-    app.add_plugin(CameraPlugin)
-        .add_plugin(FlowControlPlugin)
-        .add_plugin(AssetLoadingPlugin)
-        .add_plugin(PlayerPlugin);
+    app.add_plugins((CameraPlugin,));
 
-    app.add_plugin(GridPlugin).add_plugin(RenderPlugin);
+    app.add_plugins((
+        GridPlugin,
+        RenderPlugin,
+        FlowControlPlugin,
+        AssetLoadingPlugin,
+        PlayerPlugin,
+    ));
 
     app.run();
 }

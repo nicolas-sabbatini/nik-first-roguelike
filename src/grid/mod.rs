@@ -4,13 +4,13 @@ use bevy::prelude::*;
 
 pub mod components;
 pub mod resources;
-pub mod systems;
+mod systems;
 
 pub struct GridPlugin;
 impl Plugin for GridPlugin {
     fn build(&self, app: &mut App) {
         app.init_resource::<Grid>();
 
-        app.add_system(initialize_grid.in_schedule(OnEnter(GameState::Play)));
+        app.add_systems(OnEnter(GameState::Play), initialize_grid);
     }
 }

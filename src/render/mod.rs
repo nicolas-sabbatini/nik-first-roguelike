@@ -1,3 +1,5 @@
+use crate::flow_control::GameState;
+
 use self::systems::{load_assets, render_pieces, render_tiles, update_piece_position};
 use bevy::prelude::*;
 
@@ -8,9 +10,9 @@ mod systems;
 pub struct RenderPlugin;
 impl Plugin for RenderPlugin {
     fn build(&self, app: &mut App) {
-        app.add_startup_system(load_assets)
-            .add_system(render_tiles)
-            .add_system(render_pieces)
-            .add_system(update_piece_position);
+        app.add_systems(Startup, load_assets).add_systems(
+            Update,
+            (render_tiles, render_pieces, update_piece_position).run_if(in_state(GameState::Play)),
+        );
     }
 }

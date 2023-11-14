@@ -5,8 +5,8 @@ edition = "2021"
 authors = ["Nicolas Sabbatini <nik.code.things@gmail.com>"]
 
 [dependencies]
-bevy = "0.10"
-bevy-inspector-egui = "0.18"
+bevy = "0.11"
+bevy-inspector-egui = "0.19"
 rand = "0.8"
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
